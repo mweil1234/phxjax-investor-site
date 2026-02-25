@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PHX JAX — Arts + Innovation District | Jacksonville, FL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1B1F2E;
+    --navy-deep: #0E1018;
+    --navy-mid: #252A3D;
+    --lime: #BFDE2B;
+    --lime-dark: #9aba1a;
+    --teal: #00B5C8;
+    --teal-light: #3DD6E8;
+    --teal-dark: #008fa0;
+    --cream: #F2EDE0;
+    --warm-white: #F8F5EE;
+    --text-body: #1B1F2E;
+    --text-muted: #545870;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--text-body);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(13,17,40,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200,230,34,0.15);
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+  }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--lime); }
+  .nav-cta {
+    background: var(--lime);
+    color: var(--navy-deep);
+    padding: 10px 24px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .nav-cta:hover { background: white; }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex; align-items: flex-end;
+    padding: 0 0 80px 0;
+    overflow: hidden;
+    background: var(--navy-deep);
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(13,17,40,0.85) 0%,
+      rgba(13,17,40,0.4) 50%,
+      rgba(0,180,200,0.2) 100%
+    );
+    z-index: 1;
+  }
+  .hero-img {
+    position: absolute; inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&q=80');
+    background-size: cover; background-position: center;
+    filter: saturate(1.1) brightness(0.6);
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 60px;
+    max-width: 900px;
+    animation: fadeUp 1s ease both;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 11px; font-weight: 600; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--lime);
+    margin-bottom: 24px;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block; width: 40px; height: 1px; background: var(--lime);
+  }
+  .hero-title {
+    margin-bottom: 8px;
+  }
+  .hero-title .accent { color: var(--lime); }
+  .hero-subtitle {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: clamp(18px, 2.2vw, 26px);
+    color: rgba(255,255,255,0.75);
+    max-width: 540px;
+    line-height: 1.5;
+    margin-bottom: 48px;
+  }
+  .hero-pills { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 48px; }
+  .pill {
+    padding: 8px 20px;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.85);
+    font-size: 13px; font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+  .pill.highlight { background: var(--lime); color: var(--navy-deep); border-color: var(--lime); font-weight: 700; }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--lime); color: var(--navy-deep);
+    padding: 18px 40px;
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.25s;
+  }
+  .hero-cta:hover { background: white; transform: translateY(-2px); }
+  .hero-stats-strip {
+    position: absolute; bottom: 0; right: 0;
+    background: var(--navy);
+    display: flex; z-index: 2;
+    border-top: 2px solid var(--lime);
+  }
+  .hero-stat {
+    padding: 24px 36px;
+    border-left: 1px solid rgba(255,255,255,0.08);
+    text-align: center;
+  }
+  .hero-stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 38px; color: var(--lime);
+    letter-spacing: 1px; line-height: 1;
+  }
+  .hero-stat-label {
+    font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.55);
+    letter-spacing: 1.5px; text-transform: uppercase; margin-top: 4px;
+  }
+
+  /* ─── SECTION SHARED ─── */
+  section { padding: 100px 60px; }
+  .section-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--teal);
+    margin-bottom: 16px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--teal); opacity: 0.3; max-width: 80px; }
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(36px, 4vw, 58px);
+    color: var(--navy);
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .lead {
+    font-size: 17px; font-weight: 300; color: var(--text-muted);
+    max-width: 600px; line-height: 1.75;
+  }
+
+  /* ─── OPPORTUNITY ─── */
+  #opportunity { background: var(--cream); }
+  .opp-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 64px; margin-top: 60px; align-items: start;
+  }
+  .opp-text p {
+    font-size: 16px; line-height: 1.8; color: #444;
+    margin-bottom: 32px;
+  }
+  .phase-flow {
+    display: flex; gap: 0; margin-top: 32px;
+  }
+  .phase {
+    flex: 1; padding: 24px 20px;
+    background: var(--navy);
+    color: white;
+    position: relative;
+  }
+  .phase::after {
+    content: '→';
+    position: absolute; right: -16px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px; color: var(--lime); z-index: 1;
+    font-weight: 700;
+  }
+  .phase:last-child::after { display: none; }
+  .phase-num { font-family: 'Bebas Neue', sans-serif; font-size: 42px; color: var(--lime); }
+  .phase-title { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+  .phase-year { font-size: 11px; color: var(--teal); margin-top: 4px; }
+  .investor-box {
+    background: var(--navy-deep);
+    padding: 48px;
+    border-left: 4px solid var(--lime);
+  }
+  .investor-box h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px; color: var(--lime);
+    letter-spacing: 2px; margin-bottom: 32px;
+  }
+  .inv-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .inv-row:last-child { border-bottom: none; }
+  .inv-label { font-size: 13px; color: rgba(255,255,255,0.55); }
+  .inv-val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px; color: white; letter-spacing: 1px;
+  }
+  .inv-val.big { font-size: 40px; color: var(--lime); }
+  .why-now {
+    margin-top: 32px; padding: 24px;
+    background: rgba(200,230,34,0.08);
+    border: 1px solid rgba(200,230,34,0.2);
+  }
+  .why-now h4 { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--lime); margin-bottom: 12px; }
+  .why-now li { font-size: 14px; color: rgba(255,255,255,0.7); padding: 4px 0 4px 16px; position: relative; list-style: none; }
+  .why-now li::before { content: '→'; position: absolute; left: 0; color: var(--teal); font-size: 12px; }
+
+  /* ─── MARKET ─── */
+  #market { background: var(--navy-deep); }
+  #market h2, #market .section-label { color: white; }
+  #market .lead { color: rgba(255,255,255,0.6); }
+  .stats-mosaic {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-top: 60px;
+  }
+  .stat-card {
+    background: rgba(255,255,255,0.04);
+    padding: 40px 28px;
+    text-align: center;
+    transition: background 0.2s;
+    border-top: 2px solid transparent;
+  }
+  .stat-card:hover { background: rgba(200,230,34,0.06); border-top-color: var(--lime); }
+  .stat-card .big-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 58px; color: var(--lime);
+    letter-spacing: 1px; line-height: 1;
+  }
+  .stat-card .stat-title {
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: rgba(255,255,255,0.5);
+    margin-top: 8px;
+  }
+  .stat-card .stat-sub { font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 4px; }
+  .market-highlight {
+    margin-top: 48px; padding: 36px 48px;
+    background: var(--lime);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .market-highlight p { font-size: 20px; font-weight: 700; color: var(--navy-deep); }
+  .market-highlight span { font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: var(--navy-deep); }
+
+  /* ─── PLAYBOOK ─── */
+  #playbook { background: var(--warm-white); }
+  .playbook-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px; margin-top: 60px;
+  }
+  .play-card {
+    padding: 48px 36px;
+    position: relative; overflow: hidden;
+  }
+  .play-card.done { background: var(--navy); }
+  .play-card.progress { background: #1a3340; }
+  .play-card.planned { background: var(--navy-deep); }
+  .play-status {
+    display: inline-block; padding: 6px 16px;
+    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 24px;
+  }
+  .play-card.done .play-status { background: var(--lime); color: var(--navy-deep); }
+  .play-card.progress .play-status { background: rgba(200,230,34,0.2); color: var(--lime); border: 1px solid var(--lime); }
+  .play-card.planned .play-status { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5); }
+  .play-phase {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 44px; color: white; letter-spacing: 2px;
+    line-height: 1; margin-bottom: 4px;
+  }
+  .play-years { font-size: 18px; color: var(--teal); margin-bottom: 28px; font-weight: 300; }
+  .play-title {
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: rgba(255,255,255,0.5);
+    margin-bottom: 20px;
+  }
+  .play-items { list-style: none; }
+  .play-items li {
+    font-size: 14px; color: rgba(255,255,255,0.75);
+    padding: 6px 0 6px 20px; position: relative;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    line-height: 1.5;
+  }
+  .play-items li::before { content: '◆'; position: absolute; left: 0; font-size: 7px; color: var(--lime); top: 10px; }
+
+  /* ─── DISTRICT MAP ─── */
+  #district { background: var(--cream); }
+  .district-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-bottom: 60px; }
+  .key-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .fact-box {
+    background: var(--navy); padding: 32px;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .fact-box:hover { border-bottom-color: var(--lime); }
+  .fact-val { font-family: 'Bebas Neue', sans-serif; font-size: 46px; color: var(--lime); letter-spacing: 1px; }
+  .fact-label { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 4px; }
+  .fact-sub { font-size: 13px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+  .district-map-container {
+    position: relative; background: #e8e4dc;
+    padding: 48px; border: 1px solid rgba(0,0,0,0.08);
+  }
+  .district-map-container img { width: 100%; display: block; }
+  .map-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--navy); margin-bottom: 12px;
+  }
+  .land-arrow {
+    display: flex; align-items: center; gap: 16px;
+    margin-top: 32px; padding: 24px 32px;
+    background: var(--navy-deep);
+  }
+  .arrow-from { font-family: 'Bebas Neue', sans-serif; font-size: 40px; color: rgba(255,255,255,0.4); }
+  .arrow-icon { font-size: 28px; color: var(--lime); }
+  .arrow-to { font-family: 'Bebas Neue', sans-serif; font-size: 40px; color: var(--lime); }
+  .arrow-label { font-size: 12px; color: rgba(255,255,255,0.4); letter-spacing: 1px; text-transform: uppercase; }
+
+  /* ─── BUILDINGS ─── */
+  #buildings { background: var(--navy-deep); }
+  #buildings h2 { color: white; }
+  #buildings .section-label { color: var(--teal); }
+  .buildings-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 60px; }
+  .buildings-kpis { display: flex; gap: 48px; }
+  .bkpi { text-align: right; }
+  .bkpi-val { font-family: 'Bebas Neue', sans-serif; font-size: 44px; color: var(--lime); letter-spacing: 1px; }
+  .bkpi-label { font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: 1.5px; text-transform: uppercase; }
+  .buildings-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .building-card {
+    background: rgba(255,255,255,0.04);
+    padding: 36px 28px;
+    border-top: 2px solid transparent;
+    transition: all 0.25s;
+  }
+  .building-card:hover { background: rgba(255,255,255,0.07); border-top-color: var(--teal); transform: translateY(-4px); }
+  .building-status {
+    display: inline-block; padding: 5px 14px;
+    font-size: 9px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 20px;
+  }
+  .status-op { background: var(--lime); color: var(--navy-deep); }
+  .status-delivery { background: rgba(200,230,34,0.15); color: var(--lime); border: 1px solid rgba(200,230,34,0.3); }
+  .status-jv { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5); }
+  .building-name { font-family: 'Bebas Neue', sans-serif; font-size: 30px; color: white; letter-spacing: 2px; }
+  .building-sf { font-size: 13px; color: var(--teal); margin: 8px 0; }
+  .building-price { font-size: 22px; font-weight: 700; color: var(--lime); margin-top: 16px; }
+  .building-val { font-size: 13px; color: rgba(255,255,255,0.4); }
+
+  /* ─── PIPELINE ─── */
+  #pipeline { background: var(--warm-white); }
+  .pipeline-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; margin-top: 60px; }
+  .pipeline-card {
+    background: var(--cream);
+    padding: 32px 20px;
+    border-top: 3px solid var(--navy);
+    transition: border-color 0.2s;
+  }
+  .pipeline-card:hover { border-top-color: var(--teal); }
+  .pipeline-card.executed { border-top-color: var(--lime); background: rgba(200,230,34,0.06); }
+  .pipe-site { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 2px; color: var(--teal); }
+  .pipe-type { font-size: 11px; color: #888; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
+  .pipe-units { font-family: 'Bebas Neue', sans-serif; font-size: 42px; color: var(--navy); letter-spacing: 1px; line-height: 1; }
+  .pipe-unit-label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+  .pipe-details { margin-top: 16px; }
+  .pipe-details li { font-size: 13px; color: #555; padding: 3px 0; list-style: none; padding-left: 16px; position: relative; }
+  .pipe-details li::before { content: '·'; position: absolute; left: 4px; color: var(--teal); }
+  .pipe-monetize { margin-top: 20px; font-size: 11px; color: var(--teal); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+  .pipeline-footer {
+    margin-top: 40px; padding: 24px 40px;
+    background: var(--navy); text-align: center;
+  }
+  .pipeline-footer p {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic; font-size: 22px; color: var(--lime);
+  }
+
+  /* ─── FINANCIALS ─── */
+  #financials { background: var(--navy); }
+  #financials h2 { color: white; }
+  #financials .section-label { color: var(--teal); }
+  .fin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 60px; }
+  .fin-table {
+    background: rgba(255,255,255,0.03);
+    border-top: 2px solid var(--lime);
+  }
+  .fin-table-header {
+    background: var(--navy-deep);
+    padding: 16px 28px;
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--lime);
+  }
+  .fin-row {
+    display: flex; justify-content: space-between;
+    padding: 14px 28px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .fin-row.total {
+    background: rgba(200,230,34,0.07);
+    border-top: 1px solid rgba(200,230,34,0.2);
+  }
+  .fin-row-label { font-size: 14px; color: rgba(255,255,255,0.65); }
+  .fin-row-val { font-size: 14px; color: white; font-weight: 600; }
+  .fin-row.total .fin-row-label,
+  .fin-row.total .fin-row-val { color: var(--lime); font-weight: 700; }
+  .fin-row.sub .fin-row-label { padding-left: 16px; color: rgba(255,255,255,0.4); font-size: 13px; }
+  .fin-row.sub .fin-row-val { color: rgba(255,255,255,0.4); font-size: 13px; }
+  .nav-box {
+    margin-top: 2px; padding: 36px 28px;
+    background: var(--lime);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .nav-box-label { font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--navy-deep); }
+  .nav-box-val { font-family: 'Bebas Neue', sans-serif; font-size: 52px; color: var(--navy-deep); letter-spacing: 1px; }
+  .cashflow-table { margin-top: 48px; }
+  .cashflow-table h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px; color: white; letter-spacing: 2px; margin-bottom: 24px;
+  }
+  .cf-grid {
+    display: grid; grid-template-columns: repeat(6, 1fr);
+    gap: 2px;
+  }
+  .cf-cell {
+    background: rgba(255,255,255,0.04);
+    padding: 20px 16px; text-align: center;
+  }
+  .cf-cell.header { background: var(--navy-deep); }
+  .cf-cell.highlight { background: rgba(0,180,200,0.1); border-top: 2px solid var(--teal); }
+  .cf-year { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--teal); letter-spacing: 1px; }
+  .cf-label { font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; }
+  .cf-val { font-family: 'Bebas Neue', sans-serif; font-size: 26px; color: var(--lime); }
+  .cf-cumul { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+  .return-summary {
+    margin-top: 48px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
+  }
+  .rs-card {
+    background: rgba(255,255,255,0.04); padding: 32px 24px; text-align: center;
+    border-top: 2px solid var(--lime);
+  }
+  .rs-val { font-family: 'Bebas Neue', sans-serif; font-size: 54px; color: var(--lime); letter-spacing: 1px; line-height: 1; }
+  .rs-label { font-size: 11px; color: rgba(255,255,255,0.45); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 8px; }
+
+  /* ─── KEY TERMS ─── */
+  #terms { background: var(--cream); }
+  .terms-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 60px; align-items: start; }
+  .term-item {
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(26,31,60,0.1);
+    display: flex; gap: 24px;
+  }
+  .term-key { min-width: 180px; font-weight: 600; font-size: 14px; color: var(--navy); }
+  .term-val { font-size: 14px; color: #555; line-height: 1.6; }
+  .term-val strong { color: var(--navy); }
+  .structure-box {
+    background: var(--navy-deep); padding: 40px;
+    border-top: 4px solid var(--teal);
+  }
+  .structure-box h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px; color: var(--teal); letter-spacing: 2px; margin-bottom: 24px;
+  }
+  .struct-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 16px;
+    background: rgba(255,255,255,0.04);
+    margin-bottom: 2px;
+  }
+  .struct-row span { font-size: 13px; color: rgba(255,255,255,0.7); }
+  .struct-row strong { font-size: 14px; color: white; }
+  .closing-bar {
+    margin-top: 24px; padding: 20px 16px;
+    background: var(--lime);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .closing-bar span { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--navy-deep); }
+  .closing-bar strong { font-size: 18px; color: var(--navy-deep); }
+
+  /* ─── COMMUNITY ─── */
+  #community { background: var(--navy-deep); }
+  #community h2 { color: white; }
+  #community .section-label { color: var(--lime); }
+  #community .lead { color: rgba(255,255,255,0.55); }
+  .community-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 60px; }
+  .comm-card { padding: 48px 36px; }
+  .comm-card:nth-child(1) { background: rgba(200,230,34,0.08); border-top: 3px solid var(--lime); }
+  .comm-card:nth-child(2) { background: rgba(0,180,200,0.08); border-top: 3px solid var(--teal); }
+  .comm-card:nth-child(3) { background: rgba(255,255,255,0.04); border-top: 3px solid rgba(255,255,255,0.2); }
+  .comm-icon { font-size: 36px; margin-bottom: 20px; }
+  .comm-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 2px; color: white; margin-bottom: 20px; }
+  .comm-stats { display: flex; gap: 32px; margin-bottom: 16px; }
+  .comm-stat-n { font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: var(--lime); line-height: 1; }
+  .comm-stat-l { font-size: 11px; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 1px; }
+  .comm-desc { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+
+  /* ─── SPONSOR ─── */
+  #sponsor { background: var(--warm-white); }
+  .sponsor-layout { display: grid; grid-template-columns: 3fr 2fr; gap: 80px; align-items: start; margin-top: 60px; }
+  .sponsor-bio p { font-size: 16px; color: #555; line-height: 1.8; margin-bottom: 24px; }
+  .sponsor-track {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+  }
+  .track-box {
+    background: var(--navy); padding: 28px;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .track-box:hover { border-bottom-color: var(--lime); }
+  .track-val { font-family: 'Bebas Neue', sans-serif; font-size: 44px; color: var(--lime); letter-spacing: 1px; }
+  .track-label { font-size: 11px; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; }
+  .past-projects { margin-top: 32px; }
+  .past-projects h4 { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); margin-bottom: 16px; }
+  .proj-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .proj-tag {
+    padding: 8px 18px;
+    background: var(--navy); color: rgba(255,255,255,0.7);
+    font-size: 13px; font-weight: 500;
+    transition: background 0.2s;
+  }
+  .proj-tag:hover { background: var(--teal); color: white; }
+
+  /* ─── WHY NOW ─── */
+  #whynow {
+    background: var(--navy-deep);
+    padding: 120px 60px;
+    text-align: center;
+  }
+  #whynow .big-statement {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(60px, 8vw, 110px);
+    line-height: 0.95;
+    color: white; letter-spacing: 2px;
+    margin-bottom: 60px;
+  }
+  #whynow .big-statement span { color: var(--lime); display: block; }
+  .whynow-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 60px; }
+  .pillar {
+    padding: 48px 36px; text-align: left;
+    background: rgba(255,255,255,0.03);
+    border-top: 3px solid rgba(255,255,255,0.1);
+    transition: border-color 0.2s;
+  }
+  .pillar:hover { border-top-color: var(--lime); }
+  .pillar-title { font-family: 'Bebas Neue', sans-serif; font-size: 26px; color: var(--lime); letter-spacing: 2px; margin-bottom: 20px; }
+  .pillar li { font-size: 14px; color: rgba(255,255,255,0.65); padding: 6px 0 6px 20px; position: relative; list-style: none; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .pillar li::before { content: '→'; position: absolute; left: 0; color: var(--teal); font-size: 12px; }
+
+  /* ─── CONTACT ─── */
+  #contact {
+    background: var(--navy);
+    padding: 120px 60px;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  #contact::before {
+    content: 'PHXJAX';
+    position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 220px; color: rgba(200,228,34,0.04);
+    white-space: nowrap; letter-spacing: 8px;
+    pointer-events: none;
+  }
+  #contact h2 { color: white; margin-bottom: 16px; }
+  #contact .lead { color: rgba(255,255,255,0.5); margin: 0 auto 48px; text-align: center; }
+  .contact-box {
+    display: inline-flex; gap: 0; border: 1px solid rgba(255,255,255,0.1);
+  }
+  .contact-item {
+    padding: 32px 48px; border-right: 1px solid rgba(255,255,255,0.1);
+  }
+  .contact-item:last-child { border-right: none; }
+  .contact-label { font-size: 10px; color: rgba(255,255,255,0.35); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+  .contact-val { font-size: 18px; color: white; font-weight: 500; }
+  .contact-val a { color: var(--lime); text-decoration: none; }
+  .cta-group { margin-top: 48px; display: flex; gap: 16px; justify-content: center; }
+  .btn-primary {
+    background: var(--lime); color: var(--navy-deep);
+    padding: 18px 48px; font-size: 13px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .btn-primary:hover { background: white; transform: translateY(-2px); }
+  .btn-outline {
+    border: 1px solid rgba(255,255,255,0.3); color: white;
+    padding: 18px 48px; font-size: 13px; font-weight: 500;
+    letter-spacing: 2px; text-transform: uppercase;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--lime); color: var(--lime); }
+
+  /* ─── DISCLOSURE ─── */
+  #disclosure {
+    background: var(--navy-deep);
+    padding: 48px 60px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  #disclosure h4 { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
+  #disclosure p { font-size: 12px; color: rgba(255,255,255,0.25); line-height: 1.7; max-width: 900px; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #060810;
+    padding: 28px 60px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(200,230,34,0.1);
+  }
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: rgba(255,255,255,0.5); letter-spacing: 3px; }
+  .footer-logo span { color: var(--lime); }
+  footer p { font-size: 12px; color: rgba(255,255,255,0.2); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    section { padding: 60px 24px; }
+    .opp-grid, .fin-grid, .terms-layout, .district-intro, .sponsor-layout { grid-template-columns: 1fr; }
+    .stats-mosaic, .playbook-grid, .pipeline-grid, .community-grid, .whynow-pillars { grid-template-columns: 1fr 1fr; }
+    .buildings-grid, .return-summary, .key-facts { grid-template-columns: 1fr 1fr; }
+    .hero-stats-strip { position: static; flex-wrap: wrap; }
+    .hero-content { padding: 120px 24px 48px; }
+    #whynow .big-statement { font-size: 48px; }
+    .cf-grid { grid-template-columns: repeat(3, 1fr); }
+    .contact-box { flex-direction: column; }
+    footer { flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="https://images.squarespace-cdn.com/content/v1/682375f56d1b8c40e44c26b9/797fce96-9de1-43d2-a652-d4a114dfe1f9/WHITE-logo_phxJax_lockup_HZ_K_LINE_v01-%281%29.png" alt="PHX JAX Arts & Innovation District" style="height:34px; width:auto;">
+  </div>
+  <ul class="nav-links">
+    <li><a href="#opportunity">Opportunity</a></li>
+    <li><a href="#market">Market</a></li>
+    <li><a href="#district">District</a></li>
+    <li><a href="#financials">Financials</a></li>
+    <li><a href="#terms">Terms</a></li>
+    <li><a href="#sponsor">Sponsor</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Invest Now</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-img"></div>
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Offering Memorandum · January 2026</div>
+    <h1 class="hero-title">
+      <img src="https://images.squarespace-cdn.com/content/v1/682375f56d1b8c40e44c26b9/797fce96-9de1-43d2-a652-d4a114dfe1f9/WHITE-logo_phxJax_lockup_HZ_K_LINE_v01-%281%29.png" alt="PHX JAX Arts & Innovation District" style="width:min(520px,80vw); height:auto; display:block; margin-bottom:28px;">
+    </h1>
+    <p class="hero-subtitle">Building the Future of Cities in America's Fastest-Growing Urban Core</p>
+    <div class="hero-pills">
+      <span class="pill highlight">$7M Equity Raise</span>
+      <span class="pill">27% Target Net IRR</span>
+      <span class="pill">1.6× Equity Multiple</span>
+      <span class="pill">Jacksonville, FL</span>
+    </div>
+    <a href="#opportunity" class="hero-cta">Explore the Opportunity →</a>
+  </div>
+  <div class="hero-stats-strip">
+    <div class="hero-stat">
+      <div class="hero-stat-num">8.3</div>
+      <div class="hero-stat-label">Acres Owned</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">1.3M+</div>
+      <div class="hero-stat-label">SF Entitled</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">830</div>
+      <div class="hero-stat-label">Units Approved</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">$35.3M</div>
+      <div class="hero-stat-label">Net Asset Value</div>
+    </div>
+  </div>
+</section>
+
+<!-- OPPORTUNITY -->
+<section id="opportunity">
+  <div class="section-label">The Opportunity</div>
+  <h2>A De-Risked Urban District,<br>Ready to Monetize</h2>
+  <div class="opp-grid fade-in">
+    <div class="opp-text">
+      <p>PHXJAX is a fully assembled, entitled, income-producing 8.3-acre urban district located in Jacksonville's fastest-growing corridor. The heavy lift is complete — land control, entitlements, incentives, and early activation — creating a clear, de-risked path to monetization through land sales, building sales, joint ventures, and stabilized income.</p>
+      <p>The strategy is simple and proven: Assemble. Stabilize. Monetize. Each phase has been executed with discipline, and the platform is now positioned for significant vertical development upside.</p>
+      <div class="phase-flow">
+        <div class="phase">
+          <div class="phase-num">01</div>
+          <div class="phase-title">Assemble + Entitle</div>
+          <div class="phase-year">2020–2024</div>
+        </div>
+        <div class="phase">
+          <div class="phase-num">02</div>
+          <div class="phase-title">Stabilize</div>
+          <div class="phase-year">2025–2026</div>
+        </div>
+        <div class="phase">
+          <div class="phase-num">03</div>
+          <div class="phase-title">Monetize</div>
+          <div class="phase-year">2027–2030</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="investor-box">
+        <h3>Investor Economics</h3>
+        <div class="inv-row">
+          <span class="inv-label">Equity Raise</span>
+          <span class="inv-val big">$7M</span>
+        </div>
+        <div class="inv-row">
+          <span class="inv-label">Target Net IRR</span>
+          <span class="inv-val">27%</span>
+        </div>
+        <div class="inv-row">
+          <span class="inv-label">Equity Multiple</span>
+          <span class="inv-val">1.6×</span>
+        </div>
+        <div class="inv-row">
+          <span class="inv-label">Capital Recovery</span>
+          <span class="inv-val">2–3 YRS</span>
+        </div>
+        <div class="inv-row">
+          <span class="inv-label">Target Hold</span>
+          <span class="inv-val">5 YRS</span>
+        </div>
+        <div class="why-now">
+          <h4>Why Now?</h4>
+          <ul>
+            <li>Jacksonville is a Top-10 U.S. growth market</li>
+            <li>Severe housing supply-demand imbalance</li>
+            <li>$8B+ of underway projects nearby</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKET -->
+<section id="market">
+  <div class="section-label">The Market</div>
+  <h2 style="color:white;">Jacksonville, Florida</h2>
+  <p class="lead">A Top-10 U.S. City with Powerful Long-Term Tailwinds</p>
+  <div class="stats-mosaic fade-in">
+    <div class="stat-card">
+      <div class="big-num">~53%</div>
+      <div class="stat-title">Population Growth</div>
+      <div class="stat-sub">Since 2001 (US Census)</div>
+    </div>
+    <div class="stat-card">
+      <div class="big-num">TOP 10</div>
+      <div class="stat-title">Fastest Growing City</div>
+      <div class="stat-sub">US Census</div>
+    </div>
+    <div class="stat-card">
+      <div class="big-num">0%</div>
+      <div class="stat-title">State Income Tax</div>
+      <div class="stat-sub">Florida advantage</div>
+    </div>
+    <div class="stat-card">
+      <div class="big-num">22 MI</div>
+      <div class="stat-title">Beaches + Riverfront</div>
+      <div class="stat-sub">Access</div>
+    </div>
+    <div class="stat-card">
+      <div class="big-num">36.4</div>
+      <div class="stat-title">Median Age</div>
+      <div class="stat-sub">Young Workforce</div>
+    </div>
+    <div class="stat-card">
+      <div class="big-num">#2</div>
+      <div class="stat-title">Hottest Job Market</div>
+      <div class="stat-sub">WSJ 2024</div>
+    </div>
+    <div class="stat-card">
+      <div class="big-num">4</div>
+      <div class="stat-title">Fortune 500 HQs</div>
+      <div class="stat-sub">FIS, CSX, FNF, Landstar</div>
+    </div>
+    <div class="stat-card">
+      <div class="big-num">15–30%</div>
+      <div class="stat-title">Lower Cost of Living</div>
+      <div class="stat-sub">vs. Miami, Orlando, Atlanta</div>
+    </div>
+  </div>
+  <div class="market-highlight fade-in">
+    <p>Metro Population</p>
+    <span>~1.76M</span>
+  </div>
+</section>
+
+<!-- PLAYBOOK -->
+<section id="playbook">
+  <div class="section-label">Execution</div>
+  <h2>The PHXJAX Playbook</h2>
+  <p class="lead">A three-phase strategy executed with precision — from raw land to vertical development upside.</p>
+  <div class="playbook-grid fade-in">
+    <div class="play-card done">
+      <div class="play-status">✓ Completed</div>
+      <div class="play-phase">Assemblage +<br>Entitlement</div>
+      <div class="play-years">2020–2024</div>
+      <div class="play-title">Assembled and Entitled the District</div>
+      <ul class="play-items">
+        <li>8.3 acres assembled, 100% owned</li>
+        <li>830 residential units approved</li>
+        <li>1.3M+ SF fully entitled mixed-use density</li>
+        <li>Up to 150' max heights</li>
+        <li>Transit Oriented Development (TOD)</li>
+        <li>Initial $5.5M City incentives secured</li>
+      </ul>
+    </div>
+    <div class="play-card progress">
+      <div class="play-status">⟳ In Progress</div>
+      <div class="play-phase">Stabiliz-<br>ation</div>
+      <div class="play-years">2025–2026</div>
+      <div class="play-title">Generate Income and De-Risk the Land</div>
+      <ul class="play-items">
+        <li>~116,000 SF adaptive reuse delivered or underway</li>
+        <li>Food & beverage, creative office, studios, events</li>
+        <li>Target stabilized NOI: ~$1.1M</li>
+        <li>Target yield on cost: ~8%</li>
+        <li>$1.0M environmental remediation funding</li>
+      </ul>
+    </div>
+    <div class="play-card planned">
+      <div class="play-status">◎ Planned</div>
+      <div class="play-phase">Monetiz-<br>ation</div>
+      <div class="play-years">2027–2030</div>
+      <div class="play-title">Execute Exits and Return Capital</div>
+      <ul class="play-items">
+        <li>Vertical development via JV, merchant build, or parcel sales</li>
+        <li>Targeting 20% affordable housing (10% already achieved)</li>
+        <li>Land acquired at $3k/unit → trading at ~$30k/unit</li>
+        <li>Access to mission-driven, below-market CDFI capital</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- DISTRICT -->
+<section id="district">
+  <div class="section-label">The Asset</div>
+  <h2>A Fully Controlled,<br>Entitled District</h2>
+  <div class="district-intro fade-in">
+    <div>
+      <p class="lead" style="margin-bottom:32px;">8.3 acres, 100% owned, with completed entitlements, incentives, and early activation — creating a de-risked foundation for vertical development.</p>
+      <div class="key-facts">
+        <div class="fact-box">
+          <div class="fact-val">8.3</div>
+          <div class="fact-label">Acres</div>
+          <div class="fact-sub">100% owned land</div>
+        </div>
+        <div class="fact-box">
+          <div class="fact-val">240K</div>
+          <div class="fact-label">Square Feet</div>
+          <div class="fact-sub">Historic warehouse assets</div>
+        </div>
+        <div class="fact-box">
+          <div class="fact-val">1.3M+</div>
+          <div class="fact-label">SF Approved</div>
+          <div class="fact-sub">Mixed-use density</div>
+        </div>
+        <div class="fact-box">
+          <div class="fact-val">830</div>
+          <div class="fact-label">Units Entitled</div>
+          <div class="fact-sub">Residential</div>
+        </div>
+        <div class="fact-box">
+          <div class="fact-val">$23.2M</div>
+          <div class="fact-label">Capital Deployed</div>
+          <div class="fact-sub">Equity + debt</div>
+        </div>
+        <div class="fact-box">
+          <div class="fact-val">$5.5M</div>
+          <div class="fact-label">City Incentives</div>
+          <div class="fact-sub">Economic development package</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="land-arrow">
+        <div>
+          <div class="arrow-from">$3K</div>
+          <div class="arrow-label">per unit acquired</div>
+        </div>
+        <div class="arrow-icon">→</div>
+        <div>
+          <div class="arrow-to">$30K</div>
+          <div class="arrow-label">current market benchmark</div>
+        </div>
+      </div>
+      <div style="margin-top:24px; padding: 32px; background: var(--navy); border-top: 3px solid var(--teal);">
+        <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--teal); margin-bottom:16px;">Allowed Uses</div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <span style="padding:8px 16px; background:rgba(255,255,255,0.06); color:rgba(255,255,255,0.7); font-size:13px;">Residential</span>
+          <span style="padding:8px 16px; background:rgba(255,255,255,0.06); color:rgba(255,255,255,0.7); font-size:13px;">Hotel</span>
+          <span style="padding:8px 16px; background:rgba(255,255,255,0.06); color:rgba(255,255,255,0.7); font-size:13px;">Retail</span>
+          <span style="padding:8px 16px; background:rgba(255,255,255,0.06); color:rgba(255,255,255,0.7); font-size:13px;">Office</span>
+        </div>
+        <div style="margin-top:24px; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--teal); margin-bottom:12px;">5+ Years Work Complete</div>
+        <div style="font-size:14px; color:rgba(255,255,255,0.55); line-height:1.7;">Assemblage, entitlement, and activation work completed — all major de-risking milestones achieved.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUILDINGS -->
+<section id="buildings">
+  <div class="buildings-header fade-in">
+    <div>
+      <div class="section-label">Adaptive Reuse</div>
+      <h2>Activation Portfolio</h2>
+    </div>
+    <div class="buildings-kpis">
+      <div class="bkpi">
+        <div class="bkpi-val">48K</div>
+        <div class="bkpi-label">SF Leased</div>
+      </div>
+      <div class="bkpi">
+        <div class="bkpi-val">116K</div>
+        <div class="bkpi-label">SF Total Area</div>
+      </div>
+      <div class="bkpi">
+        <div class="bkpi-val">$1.1M</div>
+        <div class="bkpi-label">Projected NOI</div>
+      </div>
+      <div class="bkpi">
+        <div class="bkpi-val">8%</div>
+        <div class="bkpi-label">Target Yield</div>
+      </div>
+    </div>
+  </div>
+  <div class="buildings-grid fade-in">
+    <div class="building-card">
+      <div class="building-status status-op">Operational</div>
+      <div class="building-name">Emerald Station</div>
+      <div class="building-sf">18K Square Feet</div>
+      <div class="building-price">$20–30 PSF NNN</div>
+      <div class="building-val">Creative office + arts hub</div>
+    </div>
+    <div class="building-card">
+      <div class="building-status status-op">Operational</div>
+      <div class="building-name">Legacy Building</div>
+      <div class="building-sf">21K Square Feet</div>
+      <div class="building-price">$12 PSF Warehouse</div>
+      <div class="building-val">Adaptive reuse warehouse</div>
+    </div>
+    <div class="building-card">
+      <div class="building-status status-delivery">Delivery Q1 2026</div>
+      <div class="building-name">Paint Building</div>
+      <div class="building-sf">12K Square Feet</div>
+      <div class="building-price">$7 PSF Warehouse</div>
+      <div class="building-val">Creative industrial space</div>
+    </div>
+    <div class="building-card">
+      <div class="building-status status-op">Operational</div>
+      <div class="building-name">Liberty Building</div>
+      <div class="building-sf">18K Square Feet</div>
+      <div class="building-price">$20–30 PSF NNN</div>
+      <div class="building-val">F&B + entertainment venue</div>
+    </div>
+    <div class="building-card">
+      <div class="building-status status-jv">JV Discussions</div>
+      <div class="building-name">Phoenix Building</div>
+      <div class="building-sf">33K Square Feet</div>
+      <div class="building-price">$5.5M Valuation</div>
+      <div class="building-val">Anchor entertainment venue</div>
+    </div>
+    <div class="building-card">
+      <div class="building-status status-jv">JV Discussions</div>
+      <div class="building-name">Bunker Building</div>
+      <div class="building-sf">14K Square Feet</div>
+      <div class="building-price">$2.5M Valuation</div>
+      <div class="building-val">Distinctive arts venue</div>
+    </div>
+  </div>
+</section>
+
+<!-- PIPELINE -->
+<section id="pipeline">
+  <div class="section-label">Vertical Development</div>
+  <h2>The Development Pipeline</h2>
+  <p class="lead">Six development sites across the district — targeting 20% affordable housing and phased exits from 2027–2030.</p>
+  <div class="pipeline-grid fade-in">
+    <div class="pipeline-card">
+      <div class="pipe-site">Sites A & B</div>
+      <div class="pipe-type">Core Multifamily</div>
+      <div class="pipe-units">280</div>
+      <div class="pipe-unit-label">Units</div>
+      <ul class="pipe-details">
+        <li>2.1 acres — largest site</li>
+        <li>Emerald Trail runs through</li>
+        <li>Advanced JV Discussions</li>
+      </ul>
+      <div class="pipe-monetize">Target: 2027</div>
+    </div>
+    <div class="pipeline-card">
+      <div class="pipe-site">Site C</div>
+      <div class="pipe-type">Corner Multifamily</div>
+      <div class="pipe-units">220</div>
+      <div class="pipe-unit-label">Units + Retail</div>
+      <ul class="pipe-details">
+        <li>1.2 acres</li>
+        <li>High-visibility entrance parcel</li>
+        <li>Advanced JV Discussions</li>
+      </ul>
+      <div class="pipe-monetize">Target: 2028</div>
+    </div>
+    <div class="pipeline-card executed">
+      <div class="pipe-site">Site D</div>
+      <div class="pipe-type">Affordable Housing</div>
+      <div class="pipe-units">80</div>
+      <div class="pipe-unit-label">Units (&lt;60% AMI)</div>
+      <ul class="pipe-details">
+        <li>JV with Blue Sky Communities</li>
+        <li>$2.16M valuation ($27k/unit)</li>
+        <li>Groundbreaking Q1 2027</li>
+      </ul>
+      <div class="pipe-monetize" style="color:var(--lime);">✓ Executed Agreement</div>
+    </div>
+    <div class="pipeline-card">
+      <div class="pipe-site">Site E</div>
+      <div class="pipe-type">Hotel Pad</div>
+      <div class="pipe-units">150</div>
+      <div class="pipe-unit-label">Key Lifestyle Hotel</div>
+      <ul class="pipe-details">
+        <li>0.4 acres</li>
+        <li>Emerald Trail adjacency</li>
+        <li>Future Phase</li>
+      </ul>
+      <div class="pipe-monetize">Target: 2029</div>
+    </div>
+    <div class="pipeline-card">
+      <div class="pipe-site">Site F</div>
+      <div class="pipe-type">Boutique MF / Wellness</div>
+      <div class="pipe-units">250</div>
+      <div class="pipe-unit-label">Units</div>
+      <ul class="pipe-details">
+        <li>0.5 acres</li>
+        <li>Direct Emerald Trail frontage</li>
+        <li>Future Phase</li>
+      </ul>
+      <div class="pipe-monetize">Target: 2029</div>
+    </div>
+  </div>
+  <div class="pipeline-footer fade-in">
+    <p>Investors benefit from participation across all development sites</p>
+  </div>
+</section>
+
+<!-- FINANCIALS -->
+<section id="financials">
+  <div class="section-label">Financials</div>
+  <h2 style="color:white;">Financial Overview</h2>
+  <div class="fin-grid fade-in">
+    <div>
+      <div class="fin-table">
+        <div class="fin-table-header">Sources of Capital</div>
+        <div class="fin-row sub">
+          <span class="fin-row-label">Construction Loans</span>
+          <span class="fin-row-val">$3.19M</span>
+        </div>
+        <div class="fin-row sub">
+          <span class="fin-row-label">Bridge Loans</span>
+          <span class="fin-row-val">$4.23M</span>
+        </div>
+        <div class="fin-row" style="background:rgba(200,230,34,0.05);">
+          <span class="fin-row-label" style="color:var(--lime); font-weight:700;">Equity (This Raise)</span>
+          <span class="fin-row-val" style="color:var(--lime);">$7.00M</span>
+        </div>
+        <div class="fin-row total">
+          <span class="fin-row-label">Total Sources</span>
+          <span class="fin-row-val">$14.42M</span>
+        </div>
+      </div>
+      <div style="height:2px;"></div>
+      <div class="fin-table">
+        <div class="fin-table-header">Uses of Capital</div>
+        <div class="fin-row">
+          <span class="fin-row-label">Construction & Core CapEx</span>
+          <span class="fin-row-val">$2.73M</span>
+        </div>
+        <div class="fin-row">
+          <span class="fin-row-label">Tenant Improvements & Lease-Up</span>
+          <span class="fin-row-val">$1.43M</span>
+        </div>
+        <div class="fin-row">
+          <span class="fin-row-label">Financing & Capital Structure</span>
+          <span class="fin-row-val">$1.06M</span>
+        </div>
+        <div class="fin-row">
+          <span class="fin-row-label">Debt Paydowns & Refinances</span>
+          <span class="fin-row-val">$7.39M</span>
+        </div>
+        <div class="fin-row">
+          <span class="fin-row-label">Operating Runway & Carry</span>
+          <span class="fin-row-val">$1.13M</span>
+        </div>
+        <div class="fin-row">
+          <span class="fin-row-label">Sponsor & Platform Costs</span>
+          <span class="fin-row-val">$0.67M</span>
+        </div>
+        <div class="fin-row total">
+          <span class="fin-row-label">Total Uses</span>
+          <span class="fin-row-val">$14.42M</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="fin-table">
+        <div class="fin-table-header">Net Asset Value (As-Is)</div>
+        <div class="fin-row">
+          <span class="fin-row-label">Entitled Land</span>
+          <span class="fin-row-val">$28.4M</span>
+        </div>
+        <div class="fin-row">
+          <span class="fin-row-label">Buildings</span>
+          <span class="fin-row-val">$19.9M</span>
+        </div>
+        <div class="fin-row">
+          <span class="fin-row-label">Grants (Risk-Adjusted)</span>
+          <span class="fin-row-val">$2.8M</span>
+        </div>
+        <div class="fin-row">
+          <span class="fin-row-label">Restricted Cash</span>
+          <span class="fin-row-val">$0.8M</span>
+        </div>
+        <div class="fin-row total">
+          <span class="fin-row-label">Total Assets</span>
+          <span class="fin-row-val">$51.8M</span>
+        </div>
+        <div class="fin-row">
+          <span class="fin-row-label">Total Liabilities</span>
+          <span class="fin-row-val">$16.5M</span>
+        </div>
+      </div>
+      <div class="nav-box">
+        <div>
+          <div class="nav-box-label">Net Asset Value</div>
+          <div style="font-size:12px; color:var(--navy); margin-top:4px;">NAV / Invested Equity: 4.7×</div>
+        </div>
+        <div class="nav-box-val">$35.3M</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CASH FLOW TABLE -->
+  <div class="cashflow-table fade-in">
+    <h3>Investor Cash Flow — Per $1M Invested</h3>
+    <div class="cf-grid">
+      <div class="cf-cell header" style="display:flex; align-items:center; justify-content:center;">
+        <span style="font-size:11px; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:1.5px;">Year</span>
+      </div>
+      <div class="cf-cell">
+        <div class="cf-year">2026</div>
+        <div class="cf-val" style="color:rgba(255,255,255,0.3);">—</div>
+        <div class="cf-cumul">$0 cumulative</div>
+      </div>
+      <div class="cf-cell">
+        <div class="cf-year">2027</div>
+        <div class="cf-val">$0.52M</div>
+        <div class="cf-cumul">$0.52M cumulative</div>
+      </div>
+      <div class="cf-cell highlight">
+        <div class="cf-year">2028</div>
+        <div class="cf-val">$0.68M</div>
+        <div class="cf-cumul">$1.19M cumulative</div>
+      </div>
+      <div class="cf-cell">
+        <div class="cf-year">2029</div>
+        <div class="cf-val">$0.19M</div>
+        <div class="cf-cumul">$1.38M cumulative</div>
+      </div>
+      <div class="cf-cell">
+        <div class="cf-year">2030</div>
+        <div class="cf-val">$0.26M</div>
+        <div class="cf-cumul">$1.64M cumulative</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RETURN SUMMARY -->
+  <div class="return-summary fade-in">
+    <div class="rs-card">
+      <div class="rs-val">1.6×</div>
+      <div class="rs-label">Gross Equity Multiple</div>
+    </div>
+    <div class="rs-card">
+      <div class="rs-val">27%</div>
+      <div class="rs-label">Target Net IRR</div>
+    </div>
+    <div class="rs-card">
+      <div class="rs-val">2–3</div>
+      <div class="rs-label">Year Capital Recovery</div>
+    </div>
+    <div class="rs-card">
+      <div class="rs-val">5 YR</div>
+      <div class="rs-label">Investment Duration</div>
+    </div>
+  </div>
+</section>
+
+<!-- TERMS -->
+<section id="terms">
+  <div class="section-label">Deal Structure</div>
+  <h2>Key Terms</h2>
+  <div class="terms-layout fade-in">
+    <div>
+      <div class="term-item">
+        <span class="term-key">Vehicle</span>
+        <span class="term-val">FoC QOF, LLC — Qualified Opportunity Fund</span>
+      </div>
+      <div class="term-item">
+        <span class="term-key">Domicile</span>
+        <span class="term-val">Delaware (LLC)</span>
+      </div>
+      <div class="term-item">
+        <span class="term-key">Fund Manager</span>
+        <span class="term-val">Cho Management, LLC</span>
+      </div>
+      <div class="term-item">
+        <span class="term-key">Dev. Manager</span>
+        <span class="term-val">Future of Cities</span>
+      </div>
+      <div class="term-item">
+        <span class="term-key">Equity Raise</span>
+        <span class="term-val"><strong>$7 million</strong></span>
+      </div>
+      <div class="term-item">
+        <span class="term-key">Target Close</span>
+        <span class="term-val"><strong>March 31, 2026</strong></span>
+      </div>
+      <div class="term-item">
+        <span class="term-key">Preferred Return</span>
+        <span class="term-val"><strong>6.0%</strong></span>
+      </div>
+      <div class="term-item">
+        <span class="term-key">Promoted Interest</span>
+        <span class="term-val">
+          1st Hurdle: IRR 6%–15% → <strong>35% Promote</strong><br>
+          2nd Hurdle: IRR over 15% → <strong>50% Promote</strong>
+        </span>
+      </div>
+      <div class="term-item">
+        <span class="term-key">Dev. Fee</span>
+        <span class="term-val">4.5% on hard and soft costs</span>
+      </div>
+      <div class="term-item">
+        <span class="term-key">Asset Mgmt. Fee</span>
+        <span class="term-val">2.0%</span>
+      </div>
+    </div>
+    <div>
+      <div class="structure-box">
+        <h3>Fund Structure</h3>
+        <div class="struct-row">
+          <span>FOC GP, LLC</span>
+          <strong>Promoted Interest</strong>
+        </div>
+        <div class="struct-row">
+          <span>Cho Management, LLC</span>
+          <strong>Manager</strong>
+        </div>
+        <div class="struct-row" style="background:rgba(200,230,34,0.1); border-left: 3px solid var(--lime);">
+          <span>FOC QOF, LLC</span>
+          <strong style="color:var(--lime);">Investment Vehicle</strong>
+        </div>
+        <div style="margin-top:16px; padding: 12px 16px; background:rgba(255,255,255,0.04); font-size:13px; color:rgba(255,255,255,0.45);">
+          Invested across 8 Qualified Opportunity Zone Businesses (QOZB1–QOZB8) plus future acquisitions
+        </div>
+        <div class="closing-bar">
+          <span>Target Closing</span>
+          <strong>March 31, 2026</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+<section id="community">
+  <div class="section-label">Impact</div>
+  <h2>Community. Nature. Culture.</h2>
+  <p class="lead">This is the district Jacksonville has been waiting for.</p>
+  <div class="community-grid fade-in">
+    <div class="comm-card">
+      <div class="comm-icon">🏪</div>
+      <div class="comm-title">Small Business Incubation</div>
+      <div class="comm-stats">
+        <div>
+          <div class="comm-stat-n">40+</div>
+          <div class="comm-stat-l">Programs Hosted</div>
+        </div>
+        <div>
+          <div class="comm-stat-n">30+</div>
+          <div class="comm-stat-l">Businesses Supported</div>
+        </div>
+      </div>
+      <p class="comm-desc">Arts, Cultural, and Community programs supporting small businesses through markets and engagements.</p>
+    </div>
+    <div class="comm-card">
+      <div class="comm-icon">🎨</div>
+      <div class="comm-title">Community Engagement</div>
+      <div class="comm-stats">
+        <div>
+          <div class="comm-stat-n">18</div>
+          <div class="comm-stat-l">Working Artists</div>
+        </div>
+        <div>
+          <div class="comm-stat-n">25</div>
+          <div class="comm-stat-l">New Murals</div>
+        </div>
+      </div>
+      <p class="comm-desc">18 working artists in PHXJAX studios, 25 new murals installed throughout the district.</p>
+    </div>
+    <div class="comm-card">
+      <div class="comm-icon">🌱</div>
+      <div class="comm-title">Youth Programming</div>
+      <div class="comm-stats">
+        <div>
+          <div class="comm-stat-n">$350K</div>
+          <div class="comm-stat-l">State Appropriation</div>
+        </div>
+      </div>
+      <p class="comm-desc">Bloom Lab — a youth after school program focused on arts, agriculture, and entrepreneurship, supported by $350K state appropriation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SPONSOR -->
+<section id="sponsor">
+  <div class="section-label">The Sponsor</div>
+  <h2>Future of Cities</h2>
+  <div class="sponsor-layout fade-in">
+    <div class="sponsor-bio">
+      <p><strong>Future of Cities</strong> is a real estate investment and development platform with over 60 years of combined executive experience. The team has led and invested in transformative neighborhood-scale and master-planned developments in Florida, including the <strong>Wynwood Arts District</strong> and <strong>Magic City Innovation District (Little Haiti)</strong>.</p>
+      <p>Founded by <strong>Tony Cho</strong>, an early catalyst in emerging districts and founding board member of the Wynwood BID, Future of Cities pairs strong financial performance with place-based impact. Through public-private partnerships and a global advisory board of urban development and impact experts, the firm targets opportunity-driven investments with a focus on long-term value creation.</p>
+      <div class="past-projects">
+        <h4>Past Projects</h4>
+        <div class="proj-tags">
+          <span class="proj-tag">Wynwood Arts District</span>
+          <span class="proj-tag">Magic City</span>
+          <span class="proj-tag">Little Haiti</span>
+          <span class="proj-tag">4× District Exits</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="sponsor-track">
+        <div class="track-box">
+          <div class="track-val">$2B+</div>
+          <div class="track-label">Development Impact</div>
+        </div>
+        <div class="track-box">
+          <div class="track-val">$2.5B+</div>
+          <div class="track-label">Completed Transactions</div>
+        </div>
+        <div class="track-box">
+          <div class="track-val">40%+</div>
+          <div class="track-label">Internal Rate of Return</div>
+        </div>
+        <div class="track-box">
+          <div class="track-val">4×</div>
+          <div class="track-label">District Exits</div>
+        </div>
+      </div>
+      <div style="margin-top:2px; padding:28px; background:var(--navy); border-left:4px solid var(--teal);">
+        <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--teal); margin-bottom:12px;">As Seen In</div>
+        <div style="font-size:20px; font-weight:700; color:white; margin-bottom:4px;">Road to Utopia</div>
+        <div style="font-size:13px; color:rgba(255,255,255,0.4);">Now streaming on Gaia — and new book: <em>Generation Regeneration</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY NOW -->
+<section id="whynow">
+  <div class="section-label" style="justify-content:center; color:rgba(255,255,255,0.4);">The Case</div>
+  <div class="big-statement">
+    Why PHXJAX.<br>Why Jacksonville.<br><span>Why Now.</span>
+  </div>
+  <div class="whynow-pillars fade-in">
+    <div class="pillar">
+      <div class="pillar-title">PHXJAX Is Executing</div>
+      <ul>
+        <li>Market acceleration underway</li>
+        <li>Top 10 U.S. growth market</li>
+        <li>16,000+ new residents in one year</li>
+        <li>No state income tax driving in-migration</li>
+      </ul>
+    </div>
+    <div class="pillar">
+      <div class="pillar-title">Jacksonville Has Turned</div>
+      <ul>
+        <li>Severe housing supply shortage</li>
+        <li>5,200 units absorbed vs. 2,700 under construction</li>
+        <li>Metro forecast to grow ~11% from 2023–2028</li>
+      </ul>
+    </div>
+    <div class="pillar">
+      <div class="pillar-title">Final Entry Before Repricing</div>
+      <ul>
+        <li>2,400+ jobs and ~$1B in relocation/expansion in 2025</li>
+        <li>$8B+ of announced and underway projects in the urban core</li>
+        <li>Institutional confirmation of market trajectory</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label" style="justify-content:center; color:rgba(255,255,255,0.3);">Get In Touch</div>
+  <div style="margin: 0 auto 28px; display:flex; justify-content:center;">
+    <img src="https://images.squarespace-cdn.com/content/v1/682375f56d1b8c40e44c26b9/797fce96-9de1-43d2-a652-d4a114dfe1f9/WHITE-logo_phxJax_lockup_HZ_K_LINE_v01-%281%29.png" alt="PHX JAX Arts & Innovation District" style="height:48px; width:auto;">
+  </div>
+  <h2>Ready to Invest?</h2>
+  <p class="lead">Target closing: March 31, 2026. Join the investors building Jacksonville's future.</p>
+  <div class="contact-box fade-in">
+    <div class="contact-item">
+      <div class="contact-label">Contact</div>
+      <div class="contact-val">Michael Weil</div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-label">Email</div>
+      <div class="contact-val"><a href="mailto:mweil@focities.com">mweil@focities.com</a></div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-label">Phone</div>
+      <div class="contact-val"><a href="tel:3057902846" style="color:white;">305.790.2846</a></div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-label">Website</div>
+      <div class="contact-val"><a href="http://phxjax.com" target="_blank">phxjax.com</a></div>
+    </div>
+  </div>
+  <div class="cta-group fade-in">
+    <a href="mailto:mweil@focities.com" class="btn-primary">Request Investment Materials</a>
+    <a href="http://phxjax.com" target="_blank" class="btn-outline">Visit phxjax.com</a>
+  </div>
+</section>
+
+<!-- DISCLOSURE -->
+<section id="disclosure">
+  <h4>Important Disclosures</h4>
+  <p>This Executive Summary is neither an offer to sell nor the solicitation of an offer to purchase the securities of either of the Partnerships or any other person. The purpose of this Executive Summary is to inform accredited investors with whom we have a prior personal or professional relationship. An investment may be made solely by accredited investors who are provided with the private placement materials and who complete and execute the subscription agreement. This Executive Summary contains certain forward-looking statements. Past performance may not be an indication of future performance. For more information, please contact legal counsel: Hoyt Hill — hoyt@salmonlegal.com</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <img src="https://images.squarespace-cdn.com/content/v1/682375f56d1b8c40e44c26b9/797fce96-9de1-43d2-a652-d4a114dfe1f9/WHITE-logo_phxJax_lockup_HZ_K_LINE_v01-%281%29.png" alt="PHX JAX" style="height:28px; width:auto; opacity:0.45;">
+  </div>
+  <p>Jacksonville, FL · Offering Memorandum · January 2026 · Future of Cities</p>
+</footer>
+
+<script>
+  // Scroll animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Smooth active nav
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current
+        ? 'var(--lime)' : '';
+    });
+  });
+</script>
+</body>
+</html>
